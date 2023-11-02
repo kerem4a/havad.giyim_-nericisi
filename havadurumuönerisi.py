@@ -59,9 +59,9 @@ async def saatlik_hava_durumu(ctx, *, sehir: str):
             sicaklik = tahmin['main']['temp']
 
             giyim_tipi = ''
-            if hava_durumu_aciklama == 'Rain':
+            if hava_durumu_aciklama == 'yagmur':
                 giyim_tipi = 'Yağmurluk ve şemsiye kullanmayı unutmayın!'
-            elif hava_durumu_aciklama == 'Snow':
+            elif hava_durumu_aciklama == 'kar':
                 giyim_tipi = 'Sıcak ve kalın giysiler giyin, kar botları kullanın.'
             elif sicaklik >= 35:
                 giyim_tipi = 'Denize girin, şort vb. giyin, şapka ve güneş kremi kullanın.'
@@ -69,7 +69,15 @@ async def saatlik_hava_durumu(ctx, *, sehir: str):
                 giyim_tipi = 'Hafif ve serin giysiler tercih edin, şapka ve güneş kremi kullanın.'
             elif sicaklik >= 15:
                 giyim_tipi = 'Hafif bir ceket veya kazak giyin, şemsiye taşıyın.'
-            elif hava_durumu_aciklama == 'Fog':
+            elif sicaklik >= 8:
+                giyim_tipi = 'Kaban ve bot giyin, şemsiye taşıyın.'   
+            elif sicaklik >= 0:
+                giyim_tipi = 'Kaban ve bot giyin mümkün oldukça evden çıkmamaya çalışın , şemsiye taşıyın.' 
+            elif sicaklik >= -10:
+                giyim_tipi = '-30 dereceye kadar dayanıkı giysiler giyin.'   
+            elif sicaklik >= -35:
+                giyim_tipi = 'Evden çıkmayın geri dönemezsiniz.'
+            elif hava_durumu_aciklama == 'sis':
                 giyim_tipi = 'Dikkatli olun, sisli hava koşullarında açık renkli giysiler tercih edin.'
 
             giyim_tavsiyeleri.append(f'{tarih}: {hava_durumu_aciklama.capitalize()}, Sıcaklık: {sicaklik}°C - Giyim Tavsiyesi: {giyim_tipi}')
@@ -79,4 +87,4 @@ async def saatlik_hava_durumu(ctx, *, sehir: str):
         await ctx.send('Belirtilen şehir bilgisi bulunamadı. Lütfen geçerli bir şehir adı girin.')
 
 
-bot.run("MTE2NzUzMTc4OTExMjMyNDA5Ng.GfGZT-.5Sv64EgstbZNhinlGmVOoJ1Ypo9bbpVP8XIf2g")   
+bot.run("")   
